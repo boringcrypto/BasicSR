@@ -5,7 +5,13 @@ import random
 import torch
 from scipy import special
 from scipy.stats import multivariate_normal
-from torchvision.transforms.functional_tensor import rgb_to_grayscale
+
+try:
+    # version 0.15 onwards
+    from torchvision.transforms.functional import rgb_to_grayscale
+except:
+    # version < 0.15 - functional_tensor was deprecated in 0.15 and removed in 0.17
+    from torchvision.transforms.functional_tensor import rgb_to_grayscale
 
 # -------------------------------------------------------------------- #
 # --------------------------- blur kernels --------------------------- #
